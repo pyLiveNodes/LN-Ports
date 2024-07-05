@@ -80,3 +80,19 @@ class Port_np_compatible(Port):
             print(err)
             return False, "Could not convert to numpy array"
         return True, None
+
+
+class Port_Timeseries(Port):
+
+    example_values = [np.array([[1]])]
+
+    def __init__(self, name='TimeSeries', optional=False):
+        super().__init__(name, optional)
+
+    @staticmethod
+    def check_value(value):
+        if not isinstance(value, np.ndarray):
+            return False, "Should be numpy array;"
+        elif len(value.shape) != 2:
+            return False, "Shape should be of length two (Time, Channel);"
+        return True, None

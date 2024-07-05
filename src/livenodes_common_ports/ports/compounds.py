@@ -5,6 +5,7 @@ from .primitives import Port_Any
 
 # === Compounds ========================================================
 
+
 # TODO: consider if it really makes sense to mix lists and arrays...
 class Port_List(Port):
     example_values = []
@@ -32,12 +33,9 @@ def has_duplicates(iterable):
         seen.append(x)
     return False
 
+
 class Port_ListUnique(Port):
-    example_values = [
-        ["EMG1", "EMG2"],
-        [0, 1],
-        [20, .1]
-    ]
+    example_values = [["EMG1", "EMG2"], [0, 1], [20, 0.1]]
     compound_type = Port_Any
 
     @classmethod
@@ -46,7 +44,7 @@ class Port_ListUnique(Port):
 
     @classmethod
     def check_value(cls, value):
-        if (type(value) != list):
+        if type(value) != list:
             return False, f"Should be list; got {type(value)}, val: {value}."
         if has_duplicates(value):
             return False, "There should not be any duplicates;"
@@ -57,10 +55,7 @@ class Port_ListUnique(Port):
 
 class Port_Dict(Port):
 
-    example_values = [
-        {},
-        {'name': 'f', 'va': 5}
-    ]
+    example_values = [{}, {'name': 'f', 'va': 5}]
 
     def __init__(self, name='Meta'):
         super().__init__(name)
@@ -73,13 +68,7 @@ class Port_Dict(Port):
 
 
 class Port_np_compatible(Port):
-    example_values = [
-        1,
-        [-1, 2],
-        -0.5,
-        np.array([[1]]),
-        np.array([[[1, 2], [3, 4]]])
-    ]
+    example_values = [1, [-1, 2], -0.5, np.array([[1]]), np.array([[[1, 2], [3, 4]]])]
 
     @classmethod
     def check_value(cls, value):
@@ -91,4 +80,3 @@ class Port_np_compatible(Port):
             print(err)
             return False, "Could not convert to numpy array"
         return True, None
-

@@ -13,9 +13,9 @@ class Port_Any(Port):
         [["EMG1", "EMG2"]],
         [[["EMG1", "EMG2"]]],
         [0, 1],
-        [20, .1],
-        [[20, .1]],
-        [[[20, .1]]],
+        [20, 0.1],
+        [[20, 0.1]],
+        [[[20, 0.1]]],
         20,
         "Bla",
     ]
@@ -28,14 +28,11 @@ class Port_Any(Port):
         return True, None
 
 
-# === Primitives ========================================================
+# === Primitives ==============================================================
+
 
 class Port_Int(Port):
-    example_values = [
-        0,
-        1,
-        np.array([1])[0]
-    ]
+    example_values = [0, 1, np.array([1])[0]]
 
     def __init__(self, name='Int'):
         super().__init__(name)
@@ -54,12 +51,7 @@ class Port_Int(Port):
 
 
 class Port_Number(Port):
-    example_values = [
-        0,
-        0.5,
-        20,
-        np.array([1])[0]
-    ]
+    example_values = [0, 0.5, 20, np.array([1])[0]]
 
     def __init__(self, name='Number'):
         super().__init__(name)
@@ -72,11 +64,7 @@ class Port_Number(Port):
 
 
 class Port_Str(Port):
-    example_values = [
-        "Some example value",
-        "another_one",
-        np.array(['test'])[0]
-    ]
+    example_values = ["Some example value", "another_one", np.array(['test'])[0]]
 
     def __init__(self, name='Text'):
         super().__init__(name)
@@ -89,9 +77,7 @@ class Port_Str(Port):
 
 
 class Port_Bool(Port):
-    example_values = [
-        True, False, np.array([True])[0]
-    ]
+    example_values = [True, False, np.array([True])[0]]
 
     def __init__(self, name='Bool'):
         super().__init__(name)

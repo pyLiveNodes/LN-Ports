@@ -22,8 +22,3 @@ class Ports_np(NamedTuple):
 class Ports_BTS_data_channels(NamedTuple):
     data: Port_BTS_Number = Port_BTS_Number("Data")
     channels: Port_List_Str = Port_List_Str("Channel Names")
-
-
-class Ports_data_channels(NamedTuple):
-    data: Port_Data = Port_Data("Data")
-    channels: Port_List_Str = Port_List_Str("Channel Names")

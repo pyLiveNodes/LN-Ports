@@ -3,11 +3,11 @@
 The LiveNodes Common Ports contains a set of standard ports used by almost all LiveNodes packages.
 
 ## Ports in this package (TBD)
-| Node          | Purpose                                                               |
+| Port          | Purpose                                                               |
 | ------------- | --------------------------------------------------------------------- |
-| `In_function` | Inputs data generated from a NumPy function into the LiveNodes graph. |
-| `In_python`   | Inputs any python data into the LiveNodes graph.                      |
-| `Out_python`  | Saves all input data into an externally accessible list.              |
+|               |                                                                       |
+|               |                                                                       |
+|               |                                                                       |
 
 ## About LiveNodes
 [LiveNodes](https://livenodes.pages.csl.uni-bremen.de/livenodes/index.html) are small units of computation for digital signal processing in python. They are connected multiple synced channels to create complex graphs for real-time applications. Each node may provide a GUI or Graph for live interaction and visualization.

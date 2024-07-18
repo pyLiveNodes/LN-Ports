@@ -1,3 +1,5 @@
+from typing import NamedTuple
+
 from .primitives import *
 from .compounds import *
 from .compounds_typed import *

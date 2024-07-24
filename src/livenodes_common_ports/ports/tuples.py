@@ -28,3 +28,8 @@ class Ports_BTS_data_channels(NamedTuple):
 
 class Ports_ts(NamedTuple):
     ts: Port_Timeseries = Port_Timeseries("TimeSeries")
+
+
+class Ports_ts_channels(NamedTuple):
+    ts: Port_Timeseries = Port_Timeseries("TimeSeries")
+    channels: Port_List_Str = Port_List_Str("Channel Names")

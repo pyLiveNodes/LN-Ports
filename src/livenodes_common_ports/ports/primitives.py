@@ -1,5 +1,5 @@
 import numbers
-from livenodes import Port
+from livenodes.components.port import Port
 import numpy as np
 
 
@@ -20,8 +20,8 @@ class Port_Any(Port):
         "Bla",
     ]
 
-    def __init__(self, name='Any'):
-        super().__init__(name)
+    def __init__(self, name='Any', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
 
     @classmethod
     def check_value(cls, value):
@@ -34,8 +34,8 @@ class Port_Any(Port):
 class Port_Int(Port):
     example_values = [0, 1, np.array([1])[0]]
 
-    def __init__(self, name='Int'):
-        super().__init__(name)
+    def __init__(self, name='Int', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
 
     @classmethod
     def check_value(cls, value):
@@ -53,8 +53,8 @@ class Port_Int(Port):
 class Port_Number(Port):
     example_values = [0, 0.5, 20, np.array([1])[0]]
 
-    def __init__(self, name='Number'):
-        super().__init__(name)
+    def __init__(self, name='Number', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
 
     @classmethod
     def check_value(cls, value):
@@ -66,8 +66,8 @@ class Port_Number(Port):
 class Port_Str(Port):
     example_values = ["Some example value", "another_one", np.array(['test'])[0]]
 
-    def __init__(self, name='Text'):
-        super().__init__(name)
+    def __init__(self, name='Text', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
 
     @classmethod
     def check_value(cls, value):
@@ -79,8 +79,8 @@ class Port_Str(Port):
 class Port_Bool(Port):
     example_values = [True, False, np.array([True])[0]]
 
-    def __init__(self, name='Bool'):
-        super().__init__(name)
+    def __init__(self, name='Bool', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
 
     @classmethod
     def check_value(cls, value):

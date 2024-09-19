@@ -57,8 +57,8 @@ class Port_Dict(Port):
 
     example_values = [{}, {'name': 'f', 'va': 5}]
 
-    def __init__(self, name='Meta'):
-        super().__init__(name)
+    def __init__(self, name='Meta', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
 
     @classmethod
     def check_value(cls, value):
@@ -86,8 +86,8 @@ class Port_Timeseries(Port):
 
     example_values = [np.array([[1]])]
 
-    def __init__(self, name='TimeSeries', optional=False):
-        super().__init__(name, optional)
+    def __init__(self, name='TimeSeries', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
 
     @staticmethod
     def check_value(value):

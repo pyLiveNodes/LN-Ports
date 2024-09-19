@@ -31,6 +31,8 @@ test:
         - tests/**/*
   artifacts:
     when: always
+    paths:
+       - /builds/livenodes/packages/livenodes_common_ports/.tox/.package/log/*
     reports:
       junit: dist/tests/report.xml
       coverage_report: 

@@ -1,5 +1,5 @@
 import numbers
-from livenodes.components.port import Port
+from livenodes import Port
 import numpy as np
 
 

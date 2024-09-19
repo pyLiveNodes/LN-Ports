@@ -1,6 +1,6 @@
 import numpy as np
 
-from livenodes.components.port import Port
+from livenodes import Port
 from .primitives import Port_Any
 
 # === Compounds ========================================================

@@ -26,9 +26,6 @@ test:
     - pip install -r requirements_setup.txt
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
-      changes:
-        - src/**/*
-        - tests/**/*
   artifacts:
     when: always
     paths:

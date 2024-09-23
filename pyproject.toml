@@ -1,5 +1,5 @@
 [project]
-name = "Livenodes-Common-Ports"
+name = "ln-ports"
 dynamic = ['version']
 description = "LiveNodes: node based live streaming sensor/data and visualization suite."
 authors = [

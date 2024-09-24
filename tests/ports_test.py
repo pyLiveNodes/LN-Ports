@@ -7,7 +7,7 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-from livenodes_common_ports import Port_Timeseries
+from ln_ports import Port_Timeseries
 
 
 class TestProcessing:

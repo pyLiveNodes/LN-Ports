@@ -1,7 +1,7 @@
-livenodes_common_ports
+ln_ports
 ======================
 
 .. toctree::
    :maxdepth: 4
 
-   livenodes_common_ports
+   ln_ports

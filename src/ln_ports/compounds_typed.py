@@ -18,17 +18,14 @@ class Port_List_Number(Port_List):
 
 
 class Port_List_Str(Port_List):
-    example_values = [["EMG1", "EMG2"]]
     compound_type = Port_Str
 
 
 class Port_List_Any(Port_List):
-    example_values = [["EMG1", "EMG2"]]
     compound_type = Port_Any
 
 
 class Port_ListUnique_Str(Port_ListUnique):
-    example_values = [["EMG1", "EMG2"]]
     compound_type = Port_Str
 
 

@@ -1,24 +1,11 @@
 import numbers
-from livenodes.components.port import Port
+from livenodes.components.port import Port, ALL_VALUES
 import numpy as np
 
 
 # === Special Case Any ========================================================
 class Port_Any(Port):
-    # TODO: figure out how to automatically extend this with each new primitive (?) port class added...
-    example_values = [
-        np.array([[[1]]]),
-        np.arange(4).reshape((2, 2)),
-        ["EMG1", "EMG2"],
-        [["EMG1", "EMG2"]],
-        [[["EMG1", "EMG2"]]],
-        [0, 1],
-        [20, 0.1],
-        [[20, 0.1]],
-        [[[20, 0.1]]],
-        20,
-        "Bla",
-    ]
+    example_values = ALL_VALUES
 
     def __init__(self, name='Any', *args, **kwargs):
         super().__init__(name, *args, **kwargs)

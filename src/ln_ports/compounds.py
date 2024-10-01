@@ -12,8 +12,12 @@ class Port_List(Port):
     compound_type = Port_Any
 
     @classmethod
-    def example_compound_construction(cls, compounding_value):
-        return [compounding_value]
+    def all_examples_compound_construction(cls):
+        res = []
+        for x in cls.compound_type.example_values:
+            res.append([x])
+            res.append(np.array([x]))
+        return list(filter(lambda x: cls.check_value(x)[0], res))
 
     @classmethod
     def check_value(cls, value):
@@ -34,31 +38,25 @@ def has_duplicates(iterable):
     return False
 
 
-class Port_ListUnique(Port):
+class Port_ListUnique(Port_List):
     example_values = [["EMG1", "EMG2"], [0, 1], [20, 0.1]]
     compound_type = Port_Any
-
-    @classmethod
-    def example_compound_construction(cls, compounding_value):
-        return [compounding_value]
+    label = 'Unique List'
 
     @classmethod
     def check_value(cls, value):
         if type(value) != list:
             return False, f"Should be list; got {type(value)}, val: {value}."
-        if has_duplicates(value):
+        elif has_duplicates(value):
             return False, "There should not be any duplicates;"
-        if len(value) > 0:
+        elif len(value) > 0:
             return cls.compound_type.check_value(value[-1])
         return True, None
 
 
 class Port_Dict(Port):
-
     example_values = [{}, {'name': 'f', 'va': 5}]
-
-    def __init__(self, name='Meta', *args, **kwargs):
-        super().__init__(name, *args, **kwargs)
+    label = 'Meta'
 
     @classmethod
     def check_value(cls, value):
@@ -81,25 +79,17 @@ class _Port_np_compatible_base(Port):
             return False, "Could not convert to numpy array"
         return True, None
 
-class Port_np_compatible(_Port_np_compatible_base):
+class Port_np_compatible(_Port_np_compatible_base, Port_List):
     example_values = []
     compound_type = _Port_np_compatible_base
+    label = 'NP Comp.'
 
-    def __init__(self, name='NP Comp.', *args, **kwargs):
-        super().__init__(name, *args, **kwargs)
-
-    @classmethod
-    def example_compound_construction(cls, compounding_value):
-        return np.array([compounding_value])
 
 
 
 class Port_Timeseries(Port):
-
     example_values = [np.array([[1]])]
-
-    def __init__(self, name='TimeSeries', *args, **kwargs):
-        super().__init__(name, *args, **kwargs)
+    label = 'TimeSeries'
 
     @staticmethod
     def check_value(value):

@@ -67,7 +67,7 @@ class Port_Dict(Port):
         return True, None
 
 
-class Port_np_compatible(Port):
+class _Port_np_compatible_base(Port):
     example_values = [1, [-1, 2], -0.5, np.array([[1]]), np.array([[[1, 2], [3, 4]]])]
 
     @classmethod
@@ -80,6 +80,18 @@ class Port_np_compatible(Port):
             print(err)
             return False, "Could not convert to numpy array"
         return True, None
+
+class Port_np_compatible(_Port_np_compatible_base):
+    example_values = []
+    compound_type = _Port_np_compatible_base
+
+    def __init__(self, name='NP Comp.', *args, **kwargs):
+        super().__init__(name, *args, **kwargs)
+
+    @classmethod
+    def example_compound_construction(cls, compounding_value):
+        return np.array([compounding_value])
+
 
 
 class Port_Timeseries(Port):

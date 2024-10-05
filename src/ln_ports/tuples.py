@@ -1,5 +1,6 @@
 from livenodes import Ports_collection
 import deprecation
+import warnings
 
 from .primitives import *
 from .compounds import *
@@ -25,9 +26,11 @@ class Ports_BTS_data_channels(Ports_collection):
 
 @deprecation.deprecated(deprecated_in="0.12.1", removed_in="1.0", details="Use the dim ports instead")
 class Ports_ts(Ports_collection):
-    ts: Port_Timeseries = Port_Timeseries("TimeSeries")
+    with warnings.catch_warnings():
+        ts: Port_Timeseries = Port_Timeseries("TimeSeries")
 
 @deprecation.deprecated(deprecated_in="0.12.1", removed_in="1.0", details="Use the dim ports instead")
 class Ports_ts_channels(Ports_collection):
-    ts: Port_Timeseries = Port_Timeseries("TimeSeries")
+    with warnings.catch_warnings():
+        ts: Port_Timeseries = Port_Timeseries("TimeSeries")
     channels: Port_ListUnique_Str = Port_ListUnique_Str("Channel Names")

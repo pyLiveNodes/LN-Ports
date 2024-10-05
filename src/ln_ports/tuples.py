@@ -35,4 +35,4 @@ class Ports_ts_channels(Ports_collection):
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", DeprecationWarning)
         ts: Port_Timeseries = Port_Timeseries("TimeSeries")
-    channels: Port_ListUnique_Str = Port_ListUnique_Str("Channel Names")
+        channels: Port_ListUnique_Str = Port_ListUnique_Str("Channel Names")

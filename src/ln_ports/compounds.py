@@ -1,4 +1,5 @@
 import numpy as np
+import deprecation 
 
 from livenodes import Port
 from .primitives import Port_Any
@@ -87,6 +88,8 @@ class Port_np_compatible(_Port_np_compatible_base, Port_List):
 
 
 
+@deprecation.deprecated(deprecated_in="0.12.1", removed_in="1.0",
+                        details="Use the dim ports instead")
 class Port_Timeseries(Port):
     example_values = [np.array([[1]])]
     label = 'TimeSeries'

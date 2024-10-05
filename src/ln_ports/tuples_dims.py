@@ -5,16 +5,6 @@ from .compounds import *
 from .compounds_dims import *
 from .compounds_typed import Port_ListUnique_Str
 
-# --- Common Constellations ----
-class Ports_empty(Ports_collection):
-    pass
-
-class Ports_any(Ports_collection):
-    any: Port_Any = Port_Any("Any")
-
-class Ports_np(Ports_collection):
-    data_np: Port_np_compatible = Port_np_compatible("Data NP")
-
 
 # --- 1D Tuples ----
 class Ports_1D_Number(Ports_collection):

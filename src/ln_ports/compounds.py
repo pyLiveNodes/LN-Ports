@@ -1,6 +1,7 @@
 import numpy as np
+import deprecation 
 
-from livenodes.components.port import Port
+from livenodes import Port
 from .primitives import Port_Any
 
 # === Compounds ========================================================
@@ -12,8 +13,12 @@ class Port_List(Port):
     compound_type = Port_Any
 
     @classmethod
-    def example_compound_construction(cls, compounding_value):
-        return [compounding_value]
+    def all_examples_compound_construction(cls):
+        res = []
+        for x in cls.compound_type.example_values:
+            res.append([x])
+            res.append(np.array([x]))
+        return list(filter(lambda x: cls.check_value(x)[0], res))
 
     @classmethod
     def check_value(cls, value):
@@ -34,31 +39,25 @@ def has_duplicates(iterable):
     return False
 
 
-class Port_ListUnique(Port):
+class Port_ListUnique(Port_List):
     example_values = [["EMG1", "EMG2"], [0, 1], [20, 0.1]]
     compound_type = Port_Any
-
-    @classmethod
-    def example_compound_construction(cls, compounding_value):
-        return [compounding_value]
+    label = 'Unique List'
 
     @classmethod
     def check_value(cls, value):
         if type(value) != list:
             return False, f"Should be list; got {type(value)}, val: {value}."
-        if has_duplicates(value):
+        elif has_duplicates(value):
             return False, "There should not be any duplicates;"
-        if len(value) > 0:
+        elif len(value) > 0:
             return cls.compound_type.check_value(value[-1])
         return True, None
 
 
 class Port_Dict(Port):
-
     example_values = [{}, {'name': 'f', 'va': 5}]
-
-    def __init__(self, name='Meta'):
-        super().__init__(name)
+    label = 'Meta'
 
     @classmethod
     def check_value(cls, value):
@@ -67,7 +66,7 @@ class Port_Dict(Port):
         return True, None
 
 
-class Port_np_compatible(Port):
+class _Port_np_compatible_base(Port):
     example_values = [1, [-1, 2], -0.5, np.array([[1]]), np.array([[[1, 2], [3, 4]]])]
 
     @classmethod
@@ -81,13 +80,19 @@ class Port_np_compatible(Port):
             return False, "Could not convert to numpy array"
         return True, None
 
+class Port_np_compatible(_Port_np_compatible_base, Port_List):
+    example_values = []
+    compound_type = _Port_np_compatible_base
+    label = 'NP Comp.'
 
+
+
+
+@deprecation.deprecated(deprecated_in="0.12.1", removed_in="1.0",
+                        details="Use the dim ports instead")
 class Port_Timeseries(Port):
-
     example_values = [np.array([[1]])]
-
-    def __init__(self, name='TimeSeries', optional=False):
-        super().__init__(name, optional)
+    label = 'TimeSeries'
 
     @staticmethod
     def check_value(value):

@@ -1,27 +1,12 @@
 import numbers
-from livenodes.components.port import Port
+from livenodes.components.port import Port, ALL_VALUES
 import numpy as np
 
 
 # === Special Case Any ========================================================
 class Port_Any(Port):
-    # TODO: figure out how to automatically extend this with each new primitive (?) port class added...
-    example_values = [
-        np.array([[[1]]]),
-        np.arange(4).reshape((2, 2)),
-        ["EMG1", "EMG2"],
-        [["EMG1", "EMG2"]],
-        [[["EMG1", "EMG2"]]],
-        [0, 1],
-        [20, 0.1],
-        [[20, 0.1]],
-        [[[20, 0.1]]],
-        20,
-        "Bla",
-    ]
-
-    def __init__(self, name='Any'):
-        super().__init__(name)
+    example_values = ALL_VALUES
+    label = 'Any'
 
     @classmethod
     def check_value(cls, value):
@@ -33,9 +18,7 @@ class Port_Any(Port):
 
 class Port_Int(Port):
     example_values = [0, 1, np.array([1])[0]]
-
-    def __init__(self, name='Int'):
-        super().__init__(name)
+    label = 'Int'
 
     @classmethod
     def check_value(cls, value):
@@ -52,9 +35,7 @@ class Port_Int(Port):
 
 class Port_Number(Port):
     example_values = [0, 0.5, 20, np.array([1])[0]]
-
-    def __init__(self, name='Number'):
-        super().__init__(name)
+    label = 'Number'
 
     @classmethod
     def check_value(cls, value):
@@ -65,9 +46,7 @@ class Port_Number(Port):
 
 class Port_Str(Port):
     example_values = ["Some example value", "another_one", np.array(['test'])[0]]
-
-    def __init__(self, name='Text'):
-        super().__init__(name)
+    label = "Text"
 
     @classmethod
     def check_value(cls, value):
@@ -78,9 +57,7 @@ class Port_Str(Port):
 
 class Port_Bool(Port):
     example_values = [True, False, np.array([True])[0]]
-
-    def __init__(self, name='Bool'):
-        super().__init__(name)
+    label = 'Bool'
 
     @classmethod
     def check_value(cls, value):

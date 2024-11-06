@@ -7,12 +7,12 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   livenodes_common_ports.ports
+   ln_ports.ports
 
 Module contents
 ---------------
 
-.. automodule:: livenodes_common_ports
+.. automodule:: ln_ports
    :members:
    :undoc-members:
    :show-inheritance:

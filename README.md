@@ -1,3 +1,6 @@
+[![Format and Test](https://github.com/pyLiveNodes/LN-Ports/actions/workflows/format_test.yml/badge.svg)](https://github.com/pyLiveNodes/LN-Ports/actions/workflows/format_test.yml)
+[![Publish](https://github.com/pyLiveNodes/LN-Ports/actions/workflows/publish.yml/badge.svg)](https://github.com/pyLiveNodes/LN-Ports/actions/workflows/publish.yml)
+
 # LiveNodes Common Ports
 
 The LiveNodes Common Ports contains a set of standard ports used by almost all LiveNodes packages.
